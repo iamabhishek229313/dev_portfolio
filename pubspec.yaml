@@ -1,0 +1,65 @@
+name: dev_portfolio
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^0.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+  #   - images/a_dot_ham.jpeg
+
+  fonts:
+    - family: BioRhyme
+      fonts:
+        - asset: assets/fonts/BioRhyme/BioRhyme-ExtraLight.ttf
+          weight: 100
+        - asset: assets/fonts/BioRhyme/BioRhyme-Light.ttf
+          weight: 200
+        - asset: assets/fonts/BioRhyme/BioRhyme-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/BioRhyme/BioRhyme-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/BioRhyme/BioRhyme-ExtraBold.ttf
+          weight: 900
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo/Cairo-ExtraLight.ttf
+          weight: 100
+        - asset: assets/fonts/Cairo/Cairo-Light.ttf
+          weight: 200
+        - asset: assets/fonts/Cairo/Cairo-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Cairo/Cairo-SemiBold.ttf
+          weight: 700
+        - asset: assets/fonts/Cairo/Cairo-Bold.ttf
+          weight: 900
+    - family: Varela
+      fonts:
+        - asset: assets/fonts/Varela/Varela-Regular.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
