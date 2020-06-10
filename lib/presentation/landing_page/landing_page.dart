@@ -1,6 +1,8 @@
 import 'dart:math';
 
+import 'package:dev_portfolio/presentation/about_panel/about_panel_screen.dart';
 import 'package:dev_portfolio/utils/colors.dart';
+import 'package:dev_portfolio/utils/screen_height_widget.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatefulWidget {
@@ -53,64 +55,65 @@ class _LandingPageState extends State<LandingPage> {
                 flex: 12,
                 child: Column(
                   children: [
-                    ScreenHeightWidget(
-                      child: Row(
+                    About_panel(
+                        screenHeight: screenHeight, screenWidth: screenWidth),
+                    Container(
+                      height: screenHeight * 2,
+                      child: Column(
                         children: [
-                          new Expanded(
-                            flex: 2,
-                              child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 50),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: Wrap(
-                                      runAlignment: WrapAlignment.center,
-                                      children: [
-                                        "I'm ",
-                                        "an ",
-                                        "app ",
-                                        "developer ",
-                                        "and ",
-                                        "a ",
-                                        "freelancer."
-                                      ]
-                                          .map((e) => EachString(
-                                                text: e,
-                                              ))
-                                          .toList()),
-                                ),
-                                Expanded(
-                                  child: Wrap(
-                                    runAlignment: WrapAlignment.center,
-                                    children: [
-                                      Text(
-                                        "```\nHi! I'm Abhishek Kumar, a Flutter Developer living in Bhubaneswar, India.A flutter/Dart enthusiast who loves contributing to open source community.\n\n```",
-                                        style: TextStyle(
-                                            fontFamily: 'FiraCode',
-                                            fontSize: 24.0,
-                                            fontWeight: FontWeight.w200,
-                                            color: Colors.blueGrey.shade50),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            height: screenHeight * 0.1,
+                            margin: const EdgeInsets.only(left: 150),
+                            child: Text(
+                              "Projects",
+                              style: TextStyle(
+                                  fontSize: 44.0,
+                                  fontFamily: 'Cairo',
+                                  color: Colors.grey,
+                                  decoration: TextDecoration.underline),
                             ),
-                          )),
-                          new Expanded(
-                              child: Center(
-                            child: Image(
-                                height: screenHeight,
-                                width: screenWidth * 0.45,
-                                fit: BoxFit.contain,
-                                image: AssetImage(
-                                    'assets/images/Portfolio_image_final.jpg')),
-                          )),
+                          ),
+                          Container(
+                              height: screenHeight * 0.7,
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    height: screenHeight * 0.1,
+                                    margin: const EdgeInsets.only(left: 150),
+                                    child: Text(
+                                      "Tinder clone",
+                                      style: TextStyle(
+                                        fontSize: 44.0,
+                                        fontFamily: 'Cairo',
+                                        color: Colors.grey,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: screenHeight * 0.6,
+                                    child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: 10,
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          return Container(
+                                            width: 500.0,
+                                            margin:index == 0 ?  const EdgeInsets.only(
+                                                left: 160.0) :const EdgeInsets.symmetric(
+                                                horizontal: 10.0),
+                                            color: Colors.red,
+                                          );
+                                        }),
+                                  )
+                                ],
+                              ))
                         ],
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -124,91 +127,15 @@ class _LandingPageState extends State<LandingPage> {
                         (index) => Text(
                               "|",
                               style: TextStyle(
-                                  fontSize: 40.0, fontWeight: FontWeight.bold),
+                                  color: Colors.grey.shade600,
+                                  fontSize: 40.0,
+                                  fontWeight: FontWeight.bold),
                             )),
                   ))
             ],
           ),
         ),
       ]),
-    );
-  }
-}
-
-class EachString extends StatefulWidget {
-  final String text;
-
-  const EachString({Key key, @required this.text}) : super(key: key);
-
-  @override
-  _EachStringState createState() => _EachStringState();
-}
-
-class _EachStringState extends State<EachString> {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: List.generate(
-          widget.text.length,
-          (index) => TransalteContainer(
-            child: Text(
-              widget.text[index],
-              style: TextStyle(
-                  color: widget.text == "I'm " ? Colors.red : Colors.grey,
-                  fontSize: 44.0,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'BioRhyme'),
-            ),
-          ),
-        ));
-  }
-}
-
-class TransalteContainer extends StatefulWidget {
-  final Widget child;
-
-  const TransalteContainer({Key key, @required this.child}) : super(key: key);
-
-  @override
-  _TransalteContainerState createState() => _TransalteContainerState();
-}
-
-class _TransalteContainerState extends State<TransalteContainer> {
-  final onHoverTranslate = Matrix4.identity()..translate(0, -10, 0);
-  final onNonHoverTranslate = Matrix4.identity()..translate(0, 0, 0);
-
-  bool _hovering = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-        onEnter: (e) => _mouseEnter(true),
-        onExit: (e) => _mouseEnter(false),
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 200),
-          child: widget.child,
-          transform: _hovering ? onHoverTranslate : onNonHoverTranslate,
-        ));
-  }
-
-  _mouseEnter(bool val) {
-    setState(() {
-      _hovering = val;
-    });
-  }
-}
-
-class ScreenHeightWidget extends StatelessWidget {
-  final Widget child;
-
-  const ScreenHeightWidget({Key key, this.child}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: child,
     );
   }
 }
