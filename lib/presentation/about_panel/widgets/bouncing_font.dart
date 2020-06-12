@@ -11,19 +11,12 @@ class Bouncing_fonts extends StatelessWidget {
     return Expanded(
       child: Wrap(
           runAlignment: WrapAlignment.center,
-          children: [
-            "I'm ",
-            "an ",
-            "app ",
-            "developer ",
-            "and ",
-            "a ",
-            "freelancer."
-          ]
-              .map((e) => EachString(
-                    text: e,
-                  ))
-              .toList()),
+          children:
+              ["I'm ", "an ", "app ", "developer ", "and ", "a ", "freelancer."]
+                  .map((e) => EachString(
+                        text: e,
+                      ))
+                  .toList()),
     );
   }
 }

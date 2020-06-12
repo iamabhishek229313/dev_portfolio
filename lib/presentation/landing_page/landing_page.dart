@@ -1,9 +1,12 @@
 import 'dart:math';
 
+import 'package:dev_portfolio/models/image_url.dart';
 import 'package:dev_portfolio/presentation/about_panel/about_panel_screen.dart';
+import 'package:dev_portfolio/presentation/projects_panel/project_panel.dart';
 import 'package:dev_portfolio/utils/colors.dart';
 import 'package:dev_portfolio/utils/screen_height_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -57,63 +60,7 @@ class _LandingPageState extends State<LandingPage> {
                   children: [
                     About_panel(
                         screenHeight: screenHeight, screenWidth: screenWidth),
-                    Container(
-                      height: screenHeight * 2,
-                      child: Column(
-                        children: [
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            height: screenHeight * 0.1,
-                            margin: const EdgeInsets.only(left: 150),
-                            child: Text(
-                              "Projects",
-                              style: TextStyle(
-                                  fontSize: 44.0,
-                                  fontFamily: 'Cairo',
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.underline),
-                            ),
-                          ),
-                          Container(
-                              height: screenHeight * 0.7,
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    height: screenHeight * 0.1,
-                                    margin: const EdgeInsets.only(left: 150),
-                                    child: Text(
-                                      "Tinder clone",
-                                      style: TextStyle(
-                                        fontSize: 44.0,
-                                        fontFamily: 'Cairo',
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    height: screenHeight * 0.6,
-                                    child: ListView.builder(
-                                        scrollDirection: Axis.horizontal,
-                                        itemCount: 10,
-                                        itemBuilder:
-                                            (BuildContext context, int index) {
-                                          return Container(
-                                            width: 500.0,
-                                            margin:index == 0 ?  const EdgeInsets.only(
-                                                left: 160.0) :const EdgeInsets.symmetric(
-                                                horizontal: 10.0),
-                                            color: Colors.red,
-                                          );
-                                        }),
-                                  )
-                                ],
-                              ))
-                        ],
-                      ),
-                    )
+                    Project_panel(screenHeight: screenHeight)
                   ],
                 ),
               ),
@@ -139,3 +86,4 @@ class _LandingPageState extends State<LandingPage> {
     );
   }
 }
+

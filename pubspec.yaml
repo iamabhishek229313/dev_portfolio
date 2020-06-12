@@ -11,7 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  bouncing_character: ^1.1.0
+  transparent_image:
 
   cupertino_icons: ^0.1.3
 
