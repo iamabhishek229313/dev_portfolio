@@ -2,11 +2,13 @@ import 'dart:html';
 import 'dart:math';
 import 'dart:ui' as ui;
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:dev_portfolio/models/image_url.dart';
 import 'package:dev_portfolio/presentation/about_panel/about_panel_screen.dart';
 import 'package:dev_portfolio/presentation/projects_panel/Widgets/custom_divider.dart';
 import 'package:dev_portfolio/presentation/projects_panel/project_panel.dart';
 import 'package:dev_portfolio/presentation/qualification_page/Widgets/qualifications_header.dart';
+import 'package:dev_portfolio/presentation/qualification_page/qualification_page.dart';
 import 'package:dev_portfolio/utils/colors.dart';
 import 'package:dev_portfolio/utils/map_address.dart';
 import 'package:dev_portfolio/utils/screen_height_widget.dart';
@@ -21,10 +23,11 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   Widget _iFrameWidget;
   final IFrameElement _iFrameElement = new IFrameElement();
-  bool _mapLoaded = false;
+  bool _mapLoaded;
   @override
   void initState() {
     super.initState();
+    _mapLoaded = false;
   }
 
   @override
@@ -50,7 +53,7 @@ class _LandingPageState extends State<LandingPage> {
         viewType: 'iframeElement',
       );
 
-      _mapLoaded = true ;
+      _mapLoaded = true;
     }
 
     return Scaffold(
@@ -95,27 +98,7 @@ class _LandingPageState extends State<LandingPage> {
                     About_panel(
                         screenHeight: screenHeight, screenWidth: screenWidth),
                     Project_panel(screenHeight: screenHeight),
-                    Container(
-                      height: screenHeight * 1,
-                      child: Column(
-                        children: [
-                          Qualifications_head(screenHeight: screenHeight),
-                          Custom_divider(),
-                          Expanded(
-                              child: Container(
-                            color: Colors.red,
-                          )),
-                          Expanded(
-                              child: Container(
-                            color: Colors.purple,
-                          )),
-                          Expanded(
-                              child: Container(
-                            color: Colors.red,
-                          )),
-                        ],
-                      ),
-                    ),
+                    Qualification_panel(screenHeight: screenHeight),
                     Map_address(
                         screenHeight: screenHeight, iFrameWidget: _iFrameWidget)
                   ],
@@ -143,3 +126,10 @@ class _LandingPageState extends State<LandingPage> {
     );
   }
 }
+
+
+
+
+
+
+
