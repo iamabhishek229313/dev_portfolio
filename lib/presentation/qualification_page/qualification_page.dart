@@ -25,7 +25,7 @@ class Qualification_panel extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Degrees(),
-                Expanded(child: Container(color: Colors.indigo))
+                Expanded(child: Container(color: Colors.transparent))
               ],
             ),
           )
