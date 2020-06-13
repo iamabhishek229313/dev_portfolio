@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
   bouncing_character: ^1.1.0
   transparent_image:
-
+  animated_text_kit: ^2.2.0
   cupertino_icons: ^0.1.3
 
 dev_dependencies:
@@ -71,6 +71,10 @@ flutter:
           weight: 700
         - asset: assets/fonts/FiraCode/FiraCode-Bold.ttf
           weight: 900
+
+    - family: Horizon
+      fonts:
+        - asset: assets/fonts/Horizon/Horizon.otf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
